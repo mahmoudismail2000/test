@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,23 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'test';
+
+  isFlag:boolean=true
+  result!:number
+
+  @HostListener('window:scroll')
+  onScroll()
+  {
+    if(scrollY>this.result){
+      this.isFlag=false
+
+    }else{
+      this.isFlag=true
+    }
+    
+    
+    this.result=scrollY
+    
+    
+  }
 }
